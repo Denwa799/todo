@@ -1,0 +1,88 @@
+{
+    "days": [
+        {
+            "id": 1,
+            "name": "One",
+            "date": "Fri Jan 27 2023 14:26:34 GMT+0300",
+            "tasks": [
+                {
+                    "id": 1,
+                    "name": "Test",
+                    "text": "lorem ipsum",
+                    "isDone": false,
+                    "color": "red"
+                },
+                {
+                    "id": 2,
+                    "name": "Test 2",
+                    "text": "lorem ipsum dolor",
+                    "isDone": true,
+                    "color": "yellow"
+                },
+                {
+                    "id": 3,
+                    "name": "Test 3",
+                    "text": "lorem ipsum dolor ipsum",
+                    "isDone": false,
+                    "color": "blue"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Two",
+            "date": "Thu Jan 26 2023 14:26:34 GMT+0300",
+            "tasks": [
+                {
+                    "id": 1,
+                    "name": "Test",
+                    "text": "lorem ipsum",
+                    "isDone": false,
+                    "color": "red"
+                },
+                {
+                    "id": 2,
+                    "name": "Test 2",
+                    "text": "lorem ipsum dolor",
+                    "isDone": true,
+                    "color": "yellow"
+                },
+                {
+                    "id": 3,
+                    "name": "Test 3",
+                    "text": "lorem ipsum dolor ipsum",
+                    "isDone": false,
+                    "color": "blue"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Three",
+            "date": "Wed Jan 25 2023 14:26:34 GMT+0300",
+            "tasks": [
+                {
+                    "id": 1,
+                    "name": "Test",
+                    "text": "lorem ipsum",
+                    "isDone": false,
+                    "color": "red"
+                },
+                {
+                    "id": 2,
+                    "name": "Test 2",
+                    "text": "lorem ipsum dolor",
+                    "isDone": true,
+                    "color": "yellow"
+                },
+                {
+                    "id": 3,
+                    "name": "Test 3",
+                    "text": "lorem ipsum dolor ipsum",
+                    "isDone": false,
+                    "color": "blue"
+                }
+            ]
+        }
+    ]
+}
