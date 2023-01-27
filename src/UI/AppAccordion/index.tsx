@@ -12,17 +12,22 @@ import { IAppAccordion } from './types';
 import styles from './styles.module.css';
 
 export const AppAccordion: FC<IAppAccordion> = ({ title, children }) => {
-  const sx = {
+  const accordionStyles = {
     backgroundColor: THEME.backgroundColor1,
     color: THEME.primaryColor1,
     boxShadow: THEME.shadow1,
   };
 
+  const accordionSummaryStyles = {
+    minHeight: 79,
+    paddingRight: 5,
+  };
+
   return (
-    <Accordion className={styles.AppAccordion} sx={sx} square>
+    <Accordion className={styles.AppAccordion} sx={accordionStyles} square>
       <AccordionSummary
-        className={styles.AccordionSummary}
         expandIcon={<AppMoreIcon color="primary" />}
+        sx={accordionSummaryStyles}
       >
         <AppVerticalLine />
         <Typography className={styles.title}>{title}</Typography>

@@ -1,12 +1,19 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { AppContainer } from 'layouts/AppContainer';
 import { AppHeadBar } from 'components/AppHeadBar';
 import { AppCheckbox } from 'UI/AppCheckbox';
 import { FormControlLabel } from '@mui/material';
 import { AppAccordion } from 'UI/AppAccordion';
 import { AppVerticalMargins } from 'layouts/AppVerticalMargins';
+import { AppTaskCard } from 'components/AppTaskCard';
 
 export const MainPage: FC = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const onChangeSwitch = () => {
+    setIsChecked((prev) => !prev);
+  };
+
   return (
     <AppContainer>
       <AppHeadBar title="To Do" />
@@ -14,14 +21,12 @@ export const MainPage: FC = () => {
       <AppVerticalMargins margin={32}>
         <AppAccordion title="test">
           <div>
-            <div>children</div>
-            <div>children</div>
-            <div>children</div>
-            <div>children</div>
-            <div>children</div>
-            <div>children</div>
-            <div>children</div>
-            <div>children</div>
+            <AppTaskCard
+              title="day 1"
+              subtitle="lorem ipsume"
+              checked={isChecked}
+              onChange={onChangeSwitch}
+            />
           </div>
         </AppAccordion>
       </AppVerticalMargins>

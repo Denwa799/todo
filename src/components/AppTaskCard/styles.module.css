@@ -1,0 +1,32 @@
+.AppTaskCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.leftContent {
+  display: flex;
+  align-items: center;
+}
+
+.textContainer {
+  padding-left: 14px;
+}
+
+.text {
+  width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.subtitle {
+  position: relative;
+  top: -5px;
+  color: var(--primary-color-2);
+}
+
+.isChecked {
+  text-decoration: line-through;
+}

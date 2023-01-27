@@ -1,6 +1,7 @@
 import { THEME } from 'constants/theme';
 import { FC } from 'react';
 import { IAppVerticalLine } from './types';
+import styles from './styles.module.css';
 
 export const AppVerticalLine: FC<IAppVerticalLine> = ({
   color = THEME.primaryColor2,
@@ -9,6 +10,9 @@ export const AppVerticalLine: FC<IAppVerticalLine> = ({
   borderRadius = 3,
 }) => {
   return (
-    <span style={{ backgroundColor: color, width, height, borderRadius }} />
+    <span
+      className={styles.AppVerticalLine}
+      style={{ backgroundColor: color, width, height, borderRadius }}
+    />
   );
 };
