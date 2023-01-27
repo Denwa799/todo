@@ -9,4 +9,7 @@ export const THEME = {
   blueColor1: '#366eff',
   yellowColor1: '#ffeb33',
   greenColor1: '#10c200',
+
+  shadow1:
+    '16px 16px 20px rgba(0, 0, 0, 0.15), -8px -8px 20px rgba(255, 255, 255, 0.05);',
 };

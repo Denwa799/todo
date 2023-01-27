@@ -5,4 +5,9 @@
   border-radius: 30px;
   color: var(--primary-color-1);
   background-color: var(--background-color-1);
+  overflow-y: scroll;
+}
+
+.App::-webkit-scrollbar {
+  width: 1px;
 }

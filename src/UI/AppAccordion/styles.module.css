@@ -1,0 +1,16 @@
+.AppAccordion {
+  border-radius: var(--radius-1);
+}
+
+.AccordionSummary {
+  min-height: 79px;
+  padding-right: 37px;
+}
+
+.title {
+  width: 240px;
+  margin-left: 13px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
