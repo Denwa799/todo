@@ -1,0 +1,11 @@
+.AppHeadBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 17px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
