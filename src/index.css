@@ -1,1 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&family=Actor&display=swap');
+
+:root {
+  --background-color-1: #222222;
+  --background-color-2: #282828;
+
+  --primary-color-1: #f4f4f4;
+  --primary-color-2: #a9a9a9;
+
+  --red-color-1: #ff0000;
+  --blue-color-1: #366eff;
+  --yellow-color-1: #ffeb33;
+  --green-color-1: #10c200;
+
+  --shadow-1: 16px 16px 20px rgba(0, 0, 0, 0.15),
+    -8px -8px 20px rgba(255, 255, 255, 0.05);
+
+  --radius: 25px;
+}

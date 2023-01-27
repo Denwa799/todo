@@ -1,0 +1,8 @@
+.App {
+  width: 390px;
+  height: 844px;
+  margin: 0 auto;
+  border-radius: 30px;
+  color: var(--primary-color-1);
+  background-color: var(--background-color-1);
+}
