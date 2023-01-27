@@ -1,0 +1,9 @@
+.emptyListMessage {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: 45%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
