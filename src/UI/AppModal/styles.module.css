@@ -1,0 +1,19 @@
+.AppModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AppModalCard {
+  width: 350px;
+  height: 250px;
+  color: var(--primary-color-1);
+  background-color: var(--background-color-3);
+  border-radius: var(--radius-1);
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0;
+}

@@ -3,6 +3,7 @@ import { createTheme } from '@mui/material';
 export const THEME = {
   backgroundColor1: '#222222',
   backgroundColor2: '#282828',
+  backgroundColor3: '#5f5f5f',
 
   primaryColor1: '#f4f4f4',
   primaryColor2: '#a9a9a9',

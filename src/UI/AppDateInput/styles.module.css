@@ -1,0 +1,18 @@
+.AppDateInput {
+  width: 93%;
+  padding: 10px;
+  font-size: 22px;
+  cursor: text;
+  background-color: transparent;
+  border: 1px solid var(--background-color-1);
+  border-radius: 3px;
+  outline: none;
+}
+
+.AppDateInput:hover {
+  border-color: black;
+}
+
+.AppDateInput:focus {
+  border: 2px solid var(--primary-color-1);
+}

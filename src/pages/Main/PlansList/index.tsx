@@ -13,7 +13,11 @@ import { useUpdatePlanMutation } from 'hooks/muitations/useUpdatePlanMutation';
 import styles from './styles.module.css';
 import { IPlansList } from './types';
 
-export const PlansList: FC<IPlansList> = ({ isTodayTasks }) => {
+export const PlansList: FC<IPlansList> = ({
+  isTodayTasks,
+  isRefetchPlans,
+  setIsRefetchPlans,
+}) => {
   const [alertIsOpen, setAlertIsOpen] = useState(false);
   const currentDate = new Date();
   const currentTime = dateClearTime(currentDate.getTime());
@@ -22,11 +26,18 @@ export const PlansList: FC<IPlansList> = ({ isTodayTasks }) => {
     isTodayTasks && { date: currentTime }
   );
 
-  const { mutate } = useUpdatePlanMutation();
+  const { mutateAsync } = useUpdatePlanMutation();
 
   useEffect(() => {
     refetch();
   }, [isTodayTasks]);
+
+  useEffect(() => {
+    if (isRefetchPlans) {
+      refetch();
+      setIsRefetchPlans(false);
+    }
+  }, [isRefetchPlans]);
 
   useEffect(() => {
     if (error && isAxiosError(error)) setAlertIsOpen(true);
@@ -36,7 +47,7 @@ export const PlansList: FC<IPlansList> = ({ isTodayTasks }) => {
     setAlertIsOpen(false);
   };
 
-  const onChangeSwitch = (taskId: number, plan: IPlan) => {
+  const onChangeSwitch = async (taskId: number, plan: IPlan) => {
     const planIndex = plan.tasks.findIndex((task) => task.id === taskId);
     const task = plan.tasks[planIndex];
 
@@ -47,7 +58,7 @@ export const PlansList: FC<IPlansList> = ({ isTodayTasks }) => {
       id: plan.id,
       plan,
     };
-    mutate(result);
+    await mutateAsync(result);
   };
 
   if (isLoading) {
@@ -69,7 +80,7 @@ export const PlansList: FC<IPlansList> = ({ isTodayTasks }) => {
   return (
     <>
       {error && isAxiosError(error) && (
-        <Snackbar open={alertIsOpen} autoHideDuration={6000} onClick={onClose}>
+        <Snackbar open={alertIsOpen} autoHideDuration={6000} onClose={onClose}>
           <Alert severity="error" onClick={onClose}>
             {error.message}
           </Alert>
@@ -79,9 +90,10 @@ export const PlansList: FC<IPlansList> = ({ isTodayTasks }) => {
         plans.data.map((plan: IPlan) => {
           const date = new Date(plan.date);
           const isTomorrow = date.toDateString() === currentDate.toDateString();
+          const monthString = `0${date.getMonth() + 1}`.slice(-2);
           const dateString = isTomorrow
             ? `Tomorrow`
-            : `${date.getDate()}/0${date.getMonth() + 1}`;
+            : `${date.getDate()}/${monthString}`;
 
           return (
             <AppVerticalMargins key={`${plan.id} ${plan.name}`} margin={32}>

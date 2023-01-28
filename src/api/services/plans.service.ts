@@ -14,6 +14,10 @@ export const PlansService = {
     });
   },
 
+  async create(plan: IPlan) {
+    return axios.post(url, plan);
+  },
+
   async updatePlan(id: number, plan: IPlan) {
     return axios.put(`${url}/${id}`, plan);
   },

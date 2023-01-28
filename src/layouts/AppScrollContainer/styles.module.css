@@ -1,0 +1,8 @@
+.AppScrollContainer {
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.AppScrollContainer::-webkit-scrollbar {
+  width: 1px;
+}
