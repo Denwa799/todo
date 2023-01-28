@@ -1,116 +1,116 @@
 {
-    "plans": [
+  "plans": [
+    {
+      "id": 1,
+      "name": "One",
+      "date": 1674777600000,
+      "tasks": [
         {
-            "id": 1,
-            "name": "One",
-            "date": 1674777600000,
-            "tasks": [
-                {
-                    "id": 1,
-                    "name": "Test",
-                    "text": "lorem ipsum",
-                    "isDone": false,
-                    "color": "#ff0000"
-                },
-                {
-                    "id": 2,
-                    "name": "Test 2",
-                    "text": "lorem ipsum dolor",
-                    "isDone": true,
-                    "color": "#ffeb33"
-                },
-                {
-                    "id": 3,
-                    "name": "Test 3",
-                    "text": "lorem ipsum dolor ipsum",
-                    "isDone": false,
-                    "color": "#10c200"
-                }
-            ]
+          "id": 1,
+          "name": "Test",
+          "text": "lorem ipsum",
+          "isDone": true,
+          "color": "#ff0000"
         },
         {
-            "id": 2,
-            "name": "Two",
-            "date": 1674691200000,
-            "tasks": [
-                {
-                    "id": 1,
-                    "name": "Test",
-                    "text": "lorem ipsum",
-                    "isDone": false,
-                    "color": "#ff0000"
-                },
-                {
-                    "id": 2,
-                    "name": "Test 2",
-                    "text": "lorem ipsum dolor",
-                    "isDone": true,
-                    "color": "#ffeb33"
-                },
-                {
-                    "id": 3,
-                    "name": "Test 3",
-                    "text": "lorem ipsum dolor ipsum",
-                    "isDone": false,
-                    "color": "#10c200"
-                }
-            ]
+          "id": 2,
+          "name": "Test 2",
+          "text": "lorem ipsum dolor",
+          "isDone": false,
+          "color": "#ffeb33"
         },
         {
-            "id": 3,
-            "name": "Three",
-            "date": 1674604800000,
-            "tasks": [
-                {
-                    "id": 1,
-                    "name": "Test",
-                    "text": "lorem ipsum",
-                    "isDone": false,
-                    "color": "#ff0000"
-                },
-                {
-                    "id": 2,
-                    "name": "Test 2",
-                    "text": "lorem ipsum dolor",
-                    "isDone": true,
-                    "color": "#ffeb33"
-                },
-                {
-                    "id": 3,
-                    "name": "Test 3",
-                    "text": "lorem ipsum dolor ipsum",
-                    "isDone": false,
-                    "color": "#10c200"
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "name": "Four",
-            "date": 1674864000000,
-            "tasks": [
-                {
-                    "id": 1,
-                    "name": "Test",
-                    "text": "lorem ipsum",
-                    "isDone": false,
-                    "color": "#ff0000"
-                },
-                {
-                    "id": 2,
-                    "name": "Test 2",
-                    "text": "lorem ipsum dolor",
-                    "isDone": true,
-                    "color": "#ffeb33"
-                },
-                {
-                    "id": 3,
-                    "name": "Test 3",
-                    "text": "lorem ipsum dolor ipsum",
-                    "isDone": false,
-                    "color": "#10c200"
-                }
-            ]
+          "id": 3,
+          "name": "Test 3",
+          "text": "lorem ipsum dolor ipsum",
+          "isDone": true,
+          "color": "#10c200"
         }
-    ]
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Two",
+      "date": 1674691200000,
+      "tasks": [
+        {
+          "id": 1,
+          "name": "Test",
+          "text": "lorem ipsum",
+          "isDone": false,
+          "color": "#ff0000"
+        },
+        {
+          "id": 2,
+          "name": "Test 2",
+          "text": "lorem ipsum dolor",
+          "isDone": true,
+          "color": "#ffeb33"
+        },
+        {
+          "id": 3,
+          "name": "Test 3",
+          "text": "lorem ipsum dolor ipsum",
+          "isDone": true,
+          "color": "#10c200"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Three",
+      "date": 1674604800000,
+      "tasks": [
+        {
+          "id": 1,
+          "name": "Test",
+          "text": "lorem ipsum",
+          "isDone": true,
+          "color": "#ff0000"
+        },
+        {
+          "id": 2,
+          "name": "Test 2",
+          "text": "lorem ipsum dolor",
+          "isDone": true,
+          "color": "#ffeb33"
+        },
+        {
+          "id": 3,
+          "name": "Test 3",
+          "text": "lorem ipsum dolor ipsum",
+          "isDone": true,
+          "color": "#10c200"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Four",
+      "date": 1674864000000,
+      "tasks": [
+        {
+          "id": 1,
+          "name": "Test",
+          "text": "lorem ipsum",
+          "isDone": true,
+          "color": "#ff0000"
+        },
+        {
+          "id": 2,
+          "name": "Test 2",
+          "text": "lorem ipsum dolor",
+          "isDone": false,
+          "color": "#ffeb33"
+        },
+        {
+          "id": 3,
+          "name": "Test 3",
+          "text": "lorem ipsum dolor ipsum",
+          "isDone": false,
+          "color": "#10c200"
+        }
+      ]
+    }
+  ]
 }

@@ -6,14 +6,20 @@ import styles from './styles.module.css';
 import { IAppTaskCard } from './types';
 
 export const AppTaskCard: FC<IAppTaskCard> = ({
+  id,
   title,
   subtitle,
   color,
   checked = false,
+  plan,
   onChange,
 }) => {
   const titleClassName = `${checked && styles.isChecked} ${styles.text}`;
   const subtitleClassName = `${styles.text} ${styles.subtitle}`;
+
+  const onSwitch = () => {
+    onChange(id, plan);
+  };
 
   return (
     <div className={styles.AppTaskCard}>
@@ -26,7 +32,7 @@ export const AppTaskCard: FC<IAppTaskCard> = ({
           </Typography>
         </div>
       </div>
-      <AppSwitch checked={checked} onChange={onChange} />
+      <AppSwitch checked={checked} onChange={onSwitch} />
     </div>
   );
 };

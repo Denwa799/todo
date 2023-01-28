@@ -2,13 +2,14 @@ import { FC, useEffect, useState } from 'react';
 import { Alert, Snackbar, Typography } from '@mui/material';
 import { isAxiosError } from 'axios';
 import { AppTaskCard } from 'components/AppTaskCard';
-import { usePlansQuery } from 'hooks/usePlansQuery';
+import { usePlansQuery } from 'hooks/query/usePlansQuery';
 import { AppVerticalMargins } from 'layouts/AppVerticalMargins';
 import { IPlan } from 'models/IPlan';
 import { ITask } from 'models/ITask';
 import { AppAccordion } from 'UI/AppAccordion';
 import { AppSkeleton } from 'UI/AppSkeleton';
 import { dateClearTime } from 'utils/date/dateClear';
+import { useUpdatePlanMutation } from 'hooks/muitations/useUpdatePlanMutation';
 import styles from './styles.module.css';
 import { IPlansList } from './types';
 
@@ -20,6 +21,8 @@ export const PlansList: FC<IPlansList> = ({ isTodayTasks }) => {
   const { plans, isLoading, error, refetch } = usePlansQuery(
     isTodayTasks && { date: currentTime }
   );
+
+  const { mutate } = useUpdatePlanMutation();
 
   useEffect(() => {
     refetch();
@@ -33,8 +36,18 @@ export const PlansList: FC<IPlansList> = ({ isTodayTasks }) => {
     setAlertIsOpen(false);
   };
 
-  const onChangeSwitch = () => {
-    console.log('onChangeSwitch');
+  const onChangeSwitch = (taskId: number, plan: IPlan) => {
+    const planIndex = plan.tasks.findIndex((task) => task.id === taskId);
+    const task = plan.tasks[planIndex];
+
+    task.isDone = !task.isDone;
+    plan.tasks[planIndex] = task;
+
+    const result = {
+      id: plan.id,
+      plan,
+    };
+    mutate(result);
   };
 
   if (isLoading) {
@@ -79,10 +92,12 @@ export const PlansList: FC<IPlansList> = ({ isTodayTasks }) => {
                       return (
                         <AppTaskCard
                           key={`${task.id} ${task.name}`}
+                          id={task.id}
                           title={task.name}
                           subtitle={task.text}
                           color={task.color}
                           checked={task.isDone}
+                          plan={plan}
                           onChange={onChangeSwitch}
                         />
                       );
