@@ -1,3 +1,4 @@
+import { FC, useEffect, useState } from 'react';
 import { Alert, Snackbar, Typography } from '@mui/material';
 import { isAxiosError } from 'axios';
 import { AppTaskCard } from 'components/AppTaskCard';
@@ -5,14 +6,24 @@ import { usePlansQuery } from 'hooks/usePlansQuery';
 import { AppVerticalMargins } from 'layouts/AppVerticalMargins';
 import { IPlan } from 'models/IPlan';
 import { ITask } from 'models/ITask';
-import { useEffect, useState } from 'react';
 import { AppAccordion } from 'UI/AppAccordion';
 import { AppSkeleton } from 'UI/AppSkeleton';
+import { dateClearTime } from 'utils/date/dateClear';
 import styles from './styles.module.css';
+import { IPlansList } from './types';
 
-export const PlansList = () => {
-  const { plans, isLoading, error } = usePlansQuery();
+export const PlansList: FC<IPlansList> = ({ isTodayTasks }) => {
   const [alertIsOpen, setAlertIsOpen] = useState(false);
+  const currentDate = new Date();
+  const currentTime = dateClearTime(currentDate.getTime());
+
+  const { plans, isLoading, error, refetch } = usePlansQuery(
+    isTodayTasks && { date: currentTime }
+  );
+
+  useEffect(() => {
+    refetch();
+  }, [isTodayTasks]);
 
   useEffect(() => {
     if (error && isAxiosError(error)) setAlertIsOpen(true);
@@ -54,7 +65,6 @@ export const PlansList = () => {
       {plans ? (
         plans.data.map((plan: IPlan) => {
           const date = new Date(plan.date);
-          const currentDate = new Date();
           const isTomorrow = date.toDateString() === currentDate.toDateString();
           const dateString = isTomorrow
             ? `Tomorrow`

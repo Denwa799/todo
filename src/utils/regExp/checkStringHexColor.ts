@@ -1,3 +1,4 @@
+// Проверяет строку на наличие hex кода цвета
 const reg = /^#([0-9a-f]{3}){1,2}$/i;
 
 export const checkStringHexColor = (string: string) => {
