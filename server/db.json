@@ -3,7 +3,7 @@
         {
             "id": 1,
             "name": "One",
-            "date": "Fri Jan 27 2023 14:26:34 GMT+0300",
+            "date": 1674818794000,
             "tasks": [
                 {
                     "id": 1,
@@ -31,7 +31,7 @@
         {
             "id": 2,
             "name": "Two",
-            "date": "Thu Jan 26 2023 14:26:34 GMT+0300",
+            "date": 1674732394000,
             "tasks": [
                 {
                     "id": 1,
@@ -59,7 +59,7 @@
         {
             "id": 3,
             "name": "Three",
-            "date": "Wed Jan 25 2023 14:26:34 GMT+0300",
+            "date": 1674645994000,
             "tasks": [
                 {
                     "id": 1,
@@ -86,8 +86,8 @@
         },
         {
             "id": 4,
-            "name": "four",
-            "date": "Sat Jan 28 2023 14:35:57 GMT+0300",
+            "name": "Four",
+            "date": 1674905757000,
             "tasks": [
                 {
                     "id": 1,
