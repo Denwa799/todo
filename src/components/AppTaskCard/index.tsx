@@ -8,6 +8,7 @@ import { IAppTaskCard } from './types';
 export const AppTaskCard: FC<IAppTaskCard> = ({
   title,
   subtitle,
+  color,
   checked = false,
   onChange,
 }) => {
@@ -17,7 +18,7 @@ export const AppTaskCard: FC<IAppTaskCard> = ({
   return (
     <div className={styles.AppTaskCard}>
       <div className={styles.leftContent}>
-        <AppVerticalLine />
+        <AppVerticalLine color={color} />
         <div className={styles.textContainer}>
           <Typography className={titleClassName}>{title}</Typography>
           <Typography className={subtitleClassName} variant="body2">

@@ -12,7 +12,6 @@ import styles from './styles.module.css';
 
 export const PlansList = () => {
   const { plans, isLoading, error } = usePlansQuery();
-
   const [alertIsOpen, setAlertIsOpen] = useState(false);
 
   useEffect(() => {
@@ -54,9 +53,16 @@ export const PlansList = () => {
       )}
       {plans ? (
         plans.data.map((plan: IPlan) => {
+          const date = new Date(plan.date);
+          const currentDate = new Date();
+          const isTomorrow = date.toDateString() === currentDate.toDateString();
+          const dateString = isTomorrow
+            ? `Tomorrow`
+            : `${date.getDate()}/0${date.getMonth() + 1}`;
+
           return (
             <AppVerticalMargins key={`${plan.id} ${plan.name}`} margin={32}>
-              <AppAccordion title={plan.name}>
+              <AppAccordion title={`${dateString} ${plan.name}`}>
                 <div>
                   {plan.tasks.length > 0 &&
                     plan.tasks.map((task: ITask) => {
@@ -65,6 +71,7 @@ export const PlansList = () => {
                           key={`${task.id} ${task.name}`}
                           title={task.name}
                           subtitle={task.text}
+                          color={task.color}
                           checked={task.isDone}
                           onChange={onChangeSwitch}
                         />

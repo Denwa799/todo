@@ -27,6 +27,7 @@ export const theme = createTheme({
       fontSize: 36,
       fontWeight: 600,
       letterSpacing: 1,
+      fontFamily: 'Actor, sans-serif',
     },
     body1: {
       fontSize: 24,
@@ -38,6 +39,6 @@ export const theme = createTheme({
       fontWeight: 600,
       letterSpacing: 1,
     },
-    fontFamily: 'Actor, sans-serif',
+    fontFamily: 'Abhaya Libre, sans-serif',
   },
 });
