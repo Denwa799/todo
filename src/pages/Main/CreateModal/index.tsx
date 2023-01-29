@@ -1,10 +1,11 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { Alert, Button, FormControl, Snackbar, TextField } from '@mui/material';
 import { AppModal } from 'UI/AppModal';
 import { AppDateInput } from 'UI/AppDateInput';
 import { AppVerticalMargins } from 'layouts/AppVerticalMargins';
 import { dateClearTime } from 'utils/date/dateClear';
 import { useCreatePlanMutation } from 'hooks/PlansQuery/muitations/useCreatePlanMutation';
+import { isAxiosError } from 'axios';
 import { ICreateModal } from './types';
 
 export const CreateModal: FC<ICreateModal> = ({
@@ -18,7 +19,14 @@ export const CreateModal: FC<ICreateModal> = ({
   const [errorMessage, setErrorMessage] = useState('');
   const [isError, setIsError] = useState(false);
 
-  const { mutateAsync } = useCreatePlanMutation();
+  const { mutateAsync, isLoading, error } = useCreatePlanMutation();
+
+  useEffect(() => {
+    if (error && isAxiosError(error)) {
+      setErrorMessage(error.message);
+      setIsError(true);
+    }
+  }, [error]);
 
   const nameHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setNameValue(event.target.value);
@@ -91,7 +99,7 @@ export const CreateModal: FC<ICreateModal> = ({
           <AppVerticalMargins margin={10}>
             <AppDateInput value={dateValue} onChange={dateHandler} />
           </AppVerticalMargins>
-          <Button size="large" onClick={onCreate}>
+          <Button size="large" disabled={isLoading} onClick={onCreate}>
             Create
           </Button>
         </FormControl>

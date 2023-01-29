@@ -13,6 +13,7 @@ import { AppVerticalMargins } from 'layouts/AppVerticalMargins';
 import { AppModal } from 'UI/AppModal';
 import { THEME } from 'constants/theme';
 import { useChangeTasksMutation } from 'hooks/PlansQuery/muitations/useChangeTasksMutation';
+import { isAxiosError } from 'axios';
 import { ITaskModal } from './types';
 
 export const TaskModal: FC<ITaskModal> = ({
@@ -30,7 +31,7 @@ export const TaskModal: FC<ITaskModal> = ({
   const [errorMessage, setErrorMessage] = useState('');
   const [isError, setIsError] = useState(false);
 
-  const { mutateAsync } = useChangeTasksMutation();
+  const { mutateAsync, isLoading, error } = useChangeTasksMutation();
 
   useEffect(() => {
     if (task) {
@@ -39,6 +40,13 @@ export const TaskModal: FC<ITaskModal> = ({
       setColorValue(task.color);
     }
   }, [task]);
+
+  useEffect(() => {
+    if (error && isAxiosError(error)) {
+      setErrorMessage(error.message);
+      setIsError(true);
+    }
+  }, [error]);
 
   const nameHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setNameValue(event.target.value);
@@ -146,7 +154,7 @@ export const TaskModal: FC<ITaskModal> = ({
               <MenuItem value={THEME.greenColor1}>Green</MenuItem>
             </Select>
           </AppVerticalMargins>
-          <Button size="large" onClick={onSave}>
+          <Button size="large" disabled={isLoading} onClick={onSave}>
             {task ? 'Save' : 'Create'}
           </Button>
         </FormControl>
