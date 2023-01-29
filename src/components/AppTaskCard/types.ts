@@ -1,11 +1,9 @@
 import { IPlan } from 'models/IPlan';
+import { ITask } from 'models/ITask';
 
 export interface IAppTaskCard {
-  id: number;
-  title: string;
-  subtitle: string;
-  color?: string;
-  checked?: boolean;
+  task: ITask;
   plan: IPlan;
   onChange: (taskId: number, plan: IPlan) => void;
+  onClick: (planId: number, planTasks: ITask[], task: ITask) => void;
 }

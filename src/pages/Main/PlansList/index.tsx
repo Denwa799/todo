@@ -12,7 +12,7 @@ import { dateClearTime } from 'utils/date/dateClear';
 import { useUpdatePlanMutation } from 'hooks/PlansQuery/muitations/useUpdatePlanMutation';
 import styles from './styles.module.css';
 import { IPlansList } from './types';
-import { AddTaskModal } from './AddTaskModal';
+import { TaskModal } from './TaskModal';
 
 export const PlansList: FC<IPlansList> = ({
   isTodayTasks,
@@ -21,7 +21,9 @@ export const PlansList: FC<IPlansList> = ({
 }) => {
   const [selectedPlanId, setSelectedPlanId] = useState(0);
   const [selectedPlanTasks, setSelectedPlanTasks] = useState<ITask[]>([]);
-  const [addTaskModalIsOpen, setAddTaskModalIsOpen] = useState(false);
+  const [taskModalIsOpen, setTaskModalIsOpen] = useState(false);
+  const [selectedTask, setSelectedTask] = useState<ITask | null>({} as ITask);
+
   const [alertIsOpen, setAlertIsOpen] = useState(false);
 
   const currentDate = new Date();
@@ -66,10 +68,15 @@ export const PlansList: FC<IPlansList> = ({
     await mutateAsync(result);
   };
 
-  const onAddTask = (planId: number, planTasks: ITask[]) => {
+  const onOpenTask = (
+    planId: number,
+    planTasks: ITask[],
+    task: ITask | null
+  ) => {
     setSelectedPlanId(planId);
     setSelectedPlanTasks(planTasks);
-    setAddTaskModalIsOpen(true);
+    setSelectedTask(task);
+    setTaskModalIsOpen(true);
   };
 
   if (isLoading) {
@@ -97,12 +104,13 @@ export const PlansList: FC<IPlansList> = ({
           </Alert>
         </Snackbar>
       )}
-      {addTaskModalIsOpen && (
-        <AddTaskModal
+      {taskModalIsOpen && (
+        <TaskModal
           planId={selectedPlanId}
-          isOpen={addTaskModalIsOpen}
+          isOpen={taskModalIsOpen}
+          task={selectedTask}
           planTasks={selectedPlanTasks}
-          setIsOpen={setAddTaskModalIsOpen}
+          setIsOpen={setTaskModalIsOpen}
           setIsRefetchPlans={setIsRefetchPlans}
         />
       )}
@@ -123,7 +131,7 @@ export const PlansList: FC<IPlansList> = ({
                     variant="outlined"
                     size="large"
                     fullWidth
-                    onClick={() => onAddTask(plan.id, plan.tasks)}
+                    onClick={() => onOpenTask(plan.id, plan.tasks, null)}
                   >
                     Add task
                   </Button>
@@ -132,13 +140,10 @@ export const PlansList: FC<IPlansList> = ({
                       return (
                         <AppTaskCard
                           key={`${task.id} ${task.name}`}
-                          id={task.id}
-                          title={task.name}
-                          subtitle={task.text}
-                          color={task.color}
-                          checked={task.isDone}
+                          task={task}
                           plan={plan}
                           onChange={onChangeSwitch}
+                          onClick={onOpenTask}
                         />
                       );
                     })}

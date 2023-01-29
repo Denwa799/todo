@@ -12,6 +12,7 @@
 
 .textContainer {
   padding-left: 14px;
+  cursor: pointer;
 }
 
 .text {

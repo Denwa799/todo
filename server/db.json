@@ -32,6 +32,13 @@
           "text": "one",
           "isDone": false,
           "color": "#ffeb33"
+        },
+        {
+          "id": 345937772,
+          "name": "task two",
+          "text": "two",
+          "isDone": true,
+          "color": "#ff0000"
         }
       ]
     },
@@ -56,7 +63,7 @@
         },
         {
           "id": 3,
-          "name": "Test 3",
+          "name": "Test 34",
           "text": "lorem ipsum dolor ipsum",
           "isDone": true,
           "color": "#10c200"
@@ -88,6 +95,13 @@
           "text": "lorem ipsum dolor ipsum",
           "isDone": true,
           "color": "#10c200"
+        },
+        {
+          "id": 500320691,
+          "name": "new",
+          "text": "123345",
+          "isDone": false,
+          "color": "#ff0000"
         }
       ]
     },
@@ -107,7 +121,7 @@
           "id": 2,
           "name": "Test 2",
           "text": "lorem ipsum dolor",
-          "isDone": false,
+          "isDone": true,
           "color": "#ffeb33"
         },
         {
@@ -128,7 +142,7 @@
           "id": 854409469,
           "name": "test 2",
           "text": "",
-          "isDone": false,
+          "isDone": true,
           "color": "#10c200"
         }
       ]

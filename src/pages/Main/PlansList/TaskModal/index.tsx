@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import {
   Alert,
   Button,
@@ -12,12 +12,13 @@ import {
 import { AppVerticalMargins } from 'layouts/AppVerticalMargins';
 import { AppModal } from 'UI/AppModal';
 import { THEME } from 'constants/theme';
-import { useCreateTaskMutation } from 'hooks/PlansQuery/muitations/useCreateTaskMutation';
-import { IAddTaskModal } from './types';
+import { useChangeTasksMutation } from 'hooks/PlansQuery/muitations/useChangeTasksMutation';
+import { ITaskModal } from './types';
 
-export const AddTaskModal: FC<IAddTaskModal> = ({
+export const TaskModal: FC<ITaskModal> = ({
   planId,
   isOpen,
+  task,
   planTasks,
   setIsOpen,
   setIsRefetchPlans,
@@ -29,7 +30,15 @@ export const AddTaskModal: FC<IAddTaskModal> = ({
   const [errorMessage, setErrorMessage] = useState('');
   const [isError, setIsError] = useState(false);
 
-  const { mutateAsync } = useCreateTaskMutation();
+  const { mutateAsync } = useChangeTasksMutation();
+
+  useEffect(() => {
+    if (task) {
+      setNameValue(task.name);
+      setTextValue(task.text);
+      setColorValue(task.color);
+    }
+  }, [task]);
 
   const nameHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setNameValue(event.target.value);
@@ -51,7 +60,7 @@ export const AddTaskModal: FC<IAddTaskModal> = ({
     setIsOpen(false);
   };
 
-  const onCreate = async () => {
+  const onSave = async () => {
     if (nameValue.length < 3) {
       setErrorMessage('Слишком короткое название');
       return setIsError(true);
@@ -62,16 +71,22 @@ export const AddTaskModal: FC<IAddTaskModal> = ({
       return setIsError(true);
     }
 
-    const task = {
-      id: Math.floor(Math.random() * 999999999),
+    const newTask = {
+      id: task ? task.id : Math.floor(Math.random() * 999999999),
       name: nameValue,
       text: textValue,
-      isDone: false,
+      isDone: task ? task.isDone : false,
       color: colorValue,
     };
 
     const newTasks = [...planTasks];
-    newTasks.push(task);
+
+    if (task) {
+      const taskIndex = newTasks.findIndex((item) => item.id === task.id);
+      newTasks[taskIndex] = newTask;
+    } else {
+      newTasks.push(newTask);
+    }
 
     const data = {
       id: planId,
@@ -131,8 +146,8 @@ export const AddTaskModal: FC<IAddTaskModal> = ({
               <MenuItem value={THEME.greenColor1}>Green</MenuItem>
             </Select>
           </AppVerticalMargins>
-          <Button size="large" onClick={onCreate}>
-            Create
+          <Button size="large" onClick={onSave}>
+            {task ? 'Save' : 'Create'}
           </Button>
         </FormControl>
       </AppModal>

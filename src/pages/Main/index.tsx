@@ -6,7 +6,7 @@ import { FormControlLabel } from '@mui/material';
 import { AppFixedContainer } from 'layouts/AppFixedContainer';
 import { AppCircleButton } from 'UI/AppCircleButton';
 import { AppScrollContainer } from 'layouts/AppScrollContainer';
-import { useNewsQuery } from 'hooks/newsQuery/query/useNewsQuery';
+import { useNewsQuery } from 'hooks/NewsQuery/query/useNewsQuery';
 import { AppRunningLineFixed } from 'components/AppRunningLineFixed';
 import { PlansList } from './PlansList';
 import { CreateModal } from './CreateModal';

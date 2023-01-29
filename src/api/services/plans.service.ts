@@ -23,7 +23,7 @@ export const PlansService = {
     return axios.put(`${url}/${id}`, plan);
   },
 
-  async createTask(planId: number, tasks: ITask[]) {
+  async changeTasks(planId: number, tasks: ITask[]) {
     return axios.patch(`${url}/${planId}`, { tasks });
   },
 };
