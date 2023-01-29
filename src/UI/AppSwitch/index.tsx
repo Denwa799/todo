@@ -59,9 +59,15 @@ const NewSwitch = styled((props: SwitchProps) => (
 export const AppSwitch: FC<IAppSwitch> = ({
   checked,
   disabled = false,
+  sx,
   onChange,
 }) => {
   return (
-    <NewSwitch checked={checked} onChange={onChange} disabled={disabled} />
+    <NewSwitch
+      checked={checked}
+      onChange={onChange}
+      disabled={disabled}
+      sx={sx}
+    />
   );
 };

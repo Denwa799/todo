@@ -10,12 +10,14 @@ import { useNewsQuery } from 'hooks/newsQuery/query/useNewsQuery';
 import { AppRunningLineFixed } from 'components/AppRunningLineFixed';
 import { PlansList } from './PlansList';
 import { CreateModal } from './CreateModal';
+import { Settings } from './Settings';
 
 export const MainPage: FC = () => {
   const [isTodayTasks, setIsTodayTasks] = useState(false);
   const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
   const [isRefetchPlans, setIsRefetchPlans] = useState(false);
 
+  const [newsLineIsActive, setNewsLineIsActive] = useState(true);
   const [newsTitle, setNewsTitle] = useState('');
   const { news } = useNewsQuery();
 
@@ -37,7 +39,12 @@ export const MainPage: FC = () => {
     <>
       <AppScrollContainer>
         <AppContainer>
-          <AppHeadBar title="To Do" />
+          <AppHeadBar title="To Do">
+            <Settings
+              newsLineIsActive={newsLineIsActive}
+              setNewsLineIsActive={setNewsLineIsActive}
+            />
+          </AppHeadBar>
           <FormControlLabel
             control={
               <AppCheckbox
@@ -57,7 +64,9 @@ export const MainPage: FC = () => {
       <AppFixedContainer>
         <AppCircleButton onClick={onAddTodo}>+</AppCircleButton>
       </AppFixedContainer>
-      {newsTitle && <AppRunningLineFixed text={newsTitle} />}
+      {newsLineIsActive && newsTitle && (
+        <AppRunningLineFixed text={newsTitle} />
+      )}
       {createModalIsOpen && (
         <CreateModal
           open={createModalIsOpen}

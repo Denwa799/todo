@@ -6,4 +6,5 @@
   border-radius: 30px;
   color: var(--primary-color-1);
   background-color: var(--background-color-1);
+  overflow-x: hidden;
 }
