@@ -5,23 +5,21 @@ import { IAppFixedContainer } from './types';
 export const AppFixedContainer: FC<IAppFixedContainer> = ({
   children,
   top,
-  right = 25,
-  bottom = 25,
+  right = 15,
+  bottom = 35,
   left,
 }) => {
   return (
-    <Box>
-      <Box
-        sx={{
-          position: 'absolute',
-          top,
-          right,
-          bottom,
-          left,
-        }}
-      >
-        {children}
-      </Box>
+    <Box
+      sx={{
+        position: 'absolute',
+        top,
+        right,
+        bottom,
+        left,
+      }}
+    >
+      {children}
     </Box>
   );
 };

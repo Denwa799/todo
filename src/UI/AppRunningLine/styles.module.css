@@ -1,0 +1,12 @@
+.AppRunningLine {
+  padding: 5px 0;
+  background-color: var(--primary-color-2);
+  color: var(--background-color-1);
+  width: 100%;
+  overflow: hidden;
+}
+
+.content {
+  width: auto;
+  white-space: nowrap;
+}

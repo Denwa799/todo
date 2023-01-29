@@ -25,6 +25,13 @@
           "text": "lorem ipsum dolor ipsum",
           "isDone": true,
           "color": "#10c200"
+        },
+        {
+          "id": 492195034,
+          "name": "task one",
+          "text": "one",
+          "isDone": false,
+          "color": "#ffeb33"
         }
       ]
     },
