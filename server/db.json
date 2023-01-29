@@ -93,7 +93,7 @@
           "id": 1,
           "name": "Test",
           "text": "lorem ipsum",
-          "isDone": false,
+          "isDone": true,
           "color": "#ff0000"
         },
         {
@@ -107,6 +107,20 @@
           "id": 3,
           "name": "Test 3",
           "text": "lorem ipsum dolor ipsum",
+          "isDone": false,
+          "color": "#10c200"
+        },
+        {
+          "id": 149898121,
+          "name": "task new",
+          "text": "new",
+          "isDone": false,
+          "color": "#366eff"
+        },
+        {
+          "id": 854409469,
+          "name": "test 2",
+          "text": "",
           "isDone": false,
           "color": "#10c200"
         }

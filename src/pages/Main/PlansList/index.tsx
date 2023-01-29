@@ -1,24 +1,29 @@
 import { FC, useEffect, useState } from 'react';
-import { Alert, Snackbar, Typography } from '@mui/material';
+import { Alert, Button, Snackbar, Typography } from '@mui/material';
 import { isAxiosError } from 'axios';
 import { AppTaskCard } from 'components/AppTaskCard';
-import { usePlansQuery } from 'hooks/query/usePlansQuery';
+import { usePlansQuery } from 'hooks/PlansQuery/query/usePlansQuery';
 import { AppVerticalMargins } from 'layouts/AppVerticalMargins';
 import { IPlan } from 'models/IPlan';
 import { ITask } from 'models/ITask';
 import { AppAccordion } from 'UI/AppAccordion';
 import { AppSkeleton } from 'UI/AppSkeleton';
 import { dateClearTime } from 'utils/date/dateClear';
-import { useUpdatePlanMutation } from 'hooks/muitations/useUpdatePlanMutation';
+import { useUpdatePlanMutation } from 'hooks/PlansQuery/muitations/useUpdatePlanMutation';
 import styles from './styles.module.css';
 import { IPlansList } from './types';
+import { AddTaskModal } from './AddTaskModal';
 
 export const PlansList: FC<IPlansList> = ({
   isTodayTasks,
   isRefetchPlans,
   setIsRefetchPlans,
 }) => {
+  const [selectedPlanId, setSelectedPlanId] = useState(0);
+  const [selectedPlanTasks, setSelectedPlanTasks] = useState<ITask[]>([]);
+  const [addTaskModalIsOpen, setAddTaskModalIsOpen] = useState(false);
   const [alertIsOpen, setAlertIsOpen] = useState(false);
+
   const currentDate = new Date();
   const currentTime = dateClearTime(currentDate.getTime());
 
@@ -61,6 +66,12 @@ export const PlansList: FC<IPlansList> = ({
     await mutateAsync(result);
   };
 
+  const onAddTask = (planId: number, planTasks: ITask[]) => {
+    setSelectedPlanId(planId);
+    setSelectedPlanTasks(planTasks);
+    setAddTaskModalIsOpen(true);
+  };
+
   if (isLoading) {
     return (
       <>
@@ -86,6 +97,15 @@ export const PlansList: FC<IPlansList> = ({
           </Alert>
         </Snackbar>
       )}
+      {addTaskModalIsOpen && (
+        <AddTaskModal
+          planId={selectedPlanId}
+          isOpen={addTaskModalIsOpen}
+          planTasks={selectedPlanTasks}
+          setIsOpen={setAddTaskModalIsOpen}
+          setIsRefetchPlans={setIsRefetchPlans}
+        />
+      )}
       {plans ? (
         plans.data.map((plan: IPlan) => {
           const date = new Date(plan.date);
@@ -99,6 +119,14 @@ export const PlansList: FC<IPlansList> = ({
             <AppVerticalMargins key={`${plan.id} ${plan.name}`} margin={32}>
               <AppAccordion title={`${dateString} ${plan.name}`}>
                 <div>
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    fullWidth
+                    onClick={() => onAddTask(plan.id, plan.tasks)}
+                  >
+                    Add task
+                  </Button>
                   {plan.tasks.length > 0 &&
                     plan.tasks.map((task: ITask) => {
                       return (

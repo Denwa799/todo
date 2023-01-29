@@ -6,7 +6,8 @@
 
 .AppModalCard {
   width: 350px;
-  height: 250px;
+  min-height: 250px;
+  padding-bottom: 10px;
   color: var(--primary-color-1);
   background-color: var(--background-color-3);
   border-radius: var(--radius-1);

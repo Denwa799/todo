@@ -1,10 +1,10 @@
 import { ChangeEvent, FC, useState } from 'react';
-import { Alert, Button, Snackbar, TextField } from '@mui/material';
+import { Alert, Button, FormControl, Snackbar, TextField } from '@mui/material';
 import { AppModal } from 'UI/AppModal';
 import { AppDateInput } from 'UI/AppDateInput';
 import { AppVerticalMargins } from 'layouts/AppVerticalMargins';
 import { dateClearTime } from 'utils/date/dateClear';
-import { useCreatePlanMutation } from 'hooks/muitations/useCreatePlanMutation';
+import { useCreatePlanMutation } from 'hooks/PlansQuery/muitations/useCreatePlanMutation';
 import { ICreateModal } from './types';
 
 export const CreateModal: FC<ICreateModal> = ({
@@ -77,11 +77,11 @@ export const CreateModal: FC<ICreateModal> = ({
         </Snackbar>
       )}
       <AppModal open={open} onClose={onClose}>
-        <form>
+        <FormControl fullWidth>
           <AppVerticalMargins margin={10}>
             <TextField
               value={nameValue}
-              label="Название"
+              label="Name"
               required
               fullWidth
               size="small"
@@ -92,9 +92,9 @@ export const CreateModal: FC<ICreateModal> = ({
             <AppDateInput value={dateValue} onChange={dateHandler} />
           </AppVerticalMargins>
           <Button size="large" onClick={onCreate}>
-            Создать
+            Create
           </Button>
-        </form>
+        </FormControl>
       </AppModal>
     </>
   );

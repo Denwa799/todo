@@ -1,5 +1,6 @@
 import axios from 'api/axios';
 import { IPlan } from 'models/IPlan';
+import { ITask } from 'models/ITask';
 
 const url = 'plans';
 
@@ -20,5 +21,9 @@ export const PlansService = {
 
   async updatePlan(id: number, plan: IPlan) {
     return axios.put(`${url}/${id}`, plan);
+  },
+
+  async createTask(planId: number, tasks: ITask[]) {
+    return axios.patch(`${url}/${planId}`, { tasks });
   },
 };
