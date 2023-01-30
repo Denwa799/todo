@@ -124,7 +124,7 @@ export const PlansList: FC<IPlansList> = ({
             : `${date.getDate()}/${monthString}`;
 
           return (
-            <AppVerticalMargins key={`${plan.id} ${plan.name}`} margin={32}>
+            <AppVerticalMargins key={plan.id} margin={32}>
               <AppAccordion title={`${dateString} ${plan.name}`}>
                 <div>
                   <Button
@@ -139,7 +139,7 @@ export const PlansList: FC<IPlansList> = ({
                     plan.tasks.map((task: ITask) => {
                       return (
                         <AppTaskCard
-                          key={`${task.id} ${task.name}`}
+                          key={task.id}
                           task={task}
                           plan={plan}
                           onChange={onChangeSwitch}
