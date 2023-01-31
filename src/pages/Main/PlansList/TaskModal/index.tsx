@@ -22,7 +22,6 @@ export const TaskModal: FC<ITaskModal> = ({
   task,
   planTasks,
   setIsOpen,
-  setIsRefetchPlans,
 }) => {
   const [nameValue, setNameValue] = useState('');
   const [textValue, setTextValue] = useState('');
@@ -102,8 +101,7 @@ export const TaskModal: FC<ITaskModal> = ({
     };
 
     await mutateAsync(data);
-    setIsOpen(false);
-    return setIsRefetchPlans(true);
+    return setIsOpen(false);
   };
 
   return (

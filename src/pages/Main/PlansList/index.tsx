@@ -14,11 +14,7 @@ import styles from './styles.module.css';
 import { IPlansList } from './types';
 import { TaskModal } from './TaskModal';
 
-export const PlansList: FC<IPlansList> = ({
-  isTodayTasks,
-  isRefetchPlans,
-  setIsRefetchPlans,
-}) => {
+export const PlansList: FC<IPlansList> = ({ isTodayTasks }) => {
   const [selectedPlanId, setSelectedPlanId] = useState(0);
   const [selectedPlanTasks, setSelectedPlanTasks] = useState<ITask[]>([]);
   const [taskModalIsOpen, setTaskModalIsOpen] = useState(false);
@@ -38,13 +34,6 @@ export const PlansList: FC<IPlansList> = ({
   useEffect(() => {
     refetch();
   }, [isTodayTasks]);
-
-  useEffect(() => {
-    if (isRefetchPlans) {
-      refetch();
-      setIsRefetchPlans(false);
-    }
-  }, [isRefetchPlans]);
 
   useEffect(() => {
     if (error && isAxiosError(error)) setAlertIsOpen(true);
@@ -111,7 +100,6 @@ export const PlansList: FC<IPlansList> = ({
           task={selectedTask}
           planTasks={selectedPlanTasks}
           setIsOpen={setTaskModalIsOpen}
-          setIsRefetchPlans={setIsRefetchPlans}
         />
       )}
       {plans ? (

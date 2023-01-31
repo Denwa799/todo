@@ -15,7 +15,6 @@ import { Settings } from './Settings';
 export const MainPage: FC = () => {
   const [isTodayTasks, setIsTodayTasks] = useState(false);
   const [createModalIsOpen, setCreateModalIsOpen] = useState(false);
-  const [isRefetchPlans, setIsRefetchPlans] = useState(false);
 
   const [newsLineIsActive, setNewsLineIsActive] = useState(true);
   const [newsTitle, setNewsTitle] = useState('');
@@ -54,11 +53,7 @@ export const MainPage: FC = () => {
             }
             label="Today Tasks:"
           />
-          <PlansList
-            isTodayTasks={isTodayTasks}
-            isRefetchPlans={isRefetchPlans}
-            setIsRefetchPlans={setIsRefetchPlans}
-          />
+          <PlansList isTodayTasks={isTodayTasks} />
         </AppContainer>
       </AppScrollContainer>
       <AppFixedContainer>
@@ -71,7 +66,6 @@ export const MainPage: FC = () => {
         <CreateModal
           open={createModalIsOpen}
           setIsOpen={setCreateModalIsOpen}
-          setIsRefetchPlans={setIsRefetchPlans}
         />
       )}
     </>

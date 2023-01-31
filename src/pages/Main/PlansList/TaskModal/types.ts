@@ -6,5 +6,4 @@ export interface ITaskModal {
   task: ITask | null;
   planTasks: ITask[];
   setIsOpen: (value: boolean) => void;
-  setIsRefetchPlans: (value: boolean) => void;
 }

@@ -1,5 +1,6 @@
 import { useQuery } from 'react-query';
 import { NewsService } from 'api/services/news.service';
+import { newsQueryNames } from 'constants/queryNames/newsQuery';
 
 export const useNewsQuery = () => {
   const {
@@ -7,6 +8,6 @@ export const useNewsQuery = () => {
     data: news,
     error,
     refetch,
-  } = useQuery('news', () => NewsService.getAll());
+  } = useQuery(newsQueryNames.newsQueryName, () => NewsService.getAll());
   return { isLoading, news, error, refetch };
 };

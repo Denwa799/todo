@@ -8,11 +8,7 @@ import { useCreatePlanMutation } from 'hooks/PlansQuery/muitations/useCreatePlan
 import { isAxiosError } from 'axios';
 import { ICreateModal } from './types';
 
-export const CreateModal: FC<ICreateModal> = ({
-  open,
-  setIsOpen,
-  setIsRefetchPlans,
-}) => {
+export const CreateModal: FC<ICreateModal> = ({ open, setIsOpen }) => {
   const [nameValue, setNameValue] = useState('');
   const [dateValue, setDateValue] = useState('');
 
@@ -71,8 +67,7 @@ export const CreateModal: FC<ICreateModal> = ({
     };
 
     await mutateAsync(data);
-    setIsOpen(false);
-    return setIsRefetchPlans(true);
+    return setIsOpen(false);
   };
 
   return (
